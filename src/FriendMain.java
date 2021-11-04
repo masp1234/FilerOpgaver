@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class FriendMain {
     ArrayList<Friend> friends = new ArrayList<>();
-    File file = new File("C:/Users/masp9/OneDrive/Skrivebord/text.txt");
+    File file = new File("C:/Users/Martin/Desktop/text.txt");
 
     public static void main(String[] args) {
         FriendMain app = new FriendMain();
@@ -34,6 +34,8 @@ public class FriendMain {
                     enterFriend();
                     break;
                 case 3:
+                    deleteFriend();
+                    break;
                 case 4:
                     saveList();
                     break;
@@ -42,6 +44,7 @@ public class FriendMain {
                     break;
                 case 9:
                     isRunning = false;
+                    break;
             }
     }
 
@@ -107,6 +110,18 @@ public class FriendMain {
     }
 
     public void deleteFriend() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Indtast navn, telefonnummer eller email på den du vil slette: ");
+        String input = scanner.nextLine();;
+
+        for (int i = 0; i < friends.size(); i++) {
+            if (input.equalsIgnoreCase(friends.get(i).getName())
+            || input.equalsIgnoreCase(friends.get(i).getPhone())
+            || input.equalsIgnoreCase(friends.get(i).getEmail())) {
+                friends.remove(friends.get(i));
+            }
+        }
+
 
 
     }
